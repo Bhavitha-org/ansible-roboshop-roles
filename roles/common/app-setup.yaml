@@ -1,8 +1,11 @@
-- name: install nodejs
-    ansible.builtin.dnf:
-      name: nodejs
-      state: present
-    
+- name: create system user roboshop
+  ansible.builtin.user:
+    name: roboshop
+    system: true        #--system like in shell
+    home: /app          #--home /app
+    shell: /sbin/nologin
+    comment: "Roboshop system user"
+
 - name: delete app directory                               
   ansible.builtin.file:
     path: /app
@@ -27,12 +30,4 @@
   ansible.builtin.unarchive:
     src: /tmp/catalogue.zip
     dest: /app 
-    remote_src: yes- name: create system user roboshop
-  ansible.builtin.user:
-    name: roboshop
-    system: true        #--system like in shell
-    home: /app          #--home /app
-    shell: /sbin/nologin
-    comment: "Roboshop system user"
-
-  
+    remote_src: yes
