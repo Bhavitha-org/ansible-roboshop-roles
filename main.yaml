@@ -1,3 +1,4 @@
+---
 - name: roles demo                              #what ansible do? it will load the role called demo, automatically it will execute main.yaml in taska
   hosts: local'
   connection: local
