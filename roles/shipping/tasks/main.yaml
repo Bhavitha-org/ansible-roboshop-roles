@@ -27,21 +27,21 @@
   #load schema (in shell, we validate $? and loaded schema to mysql db, appuser and master data)
   #here, we have mysql db modules
 
-  - name: import shipping data
-    community.mysql.mysql_db:
-      state: import
-      name: all
-      login_host: "{{ MYSQL_HOST }}"         #-h host
-      login_user: root                       #-u root
-      login_password: RoboShop@1             # -p password   same as in documentation command
-      target: "{{ item }}"
-    loop:
-    - /app/db/schema.sql
-    - /app/db/app-user.sql
-    - /app/db/master-data.sql
+- name: import shipping data
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    login_host: "{{ MYSQL_HOST }}"         #-h host
+    login_user: root                       #-u root
+    login_password: RoboShop@1             # -p password   same as in documentation command
+    target: "{{ item }}"
+  loop:
+  - /app/db/schema.sql
+  - /app/db/app-user.sql
+  - /app/db/master-data.sql
 
-  - name: start and enable shipping
-    ansible.builtin.service:
-      name: shipping
-      state: restarted
-      enabled: yes
+- name: start and enable shipping
+  ansible.builtin.service:
+    name: shipping
+    state: restarted
+    enabled: yes
