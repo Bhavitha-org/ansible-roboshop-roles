@@ -14,4 +14,4 @@ compose:
 #   key: tags.Name 
 keyed_groups:
 - seperator: ''
-  key: frontend
+  key: tags.component
