@@ -4,9 +4,9 @@ regions:
 hostnames:
 # - ip-address
 - private-ip-address
-keyed_groups:
-- prefix: ""
-  key: frontend 
 filters:
   instance-state-name: running
   tag:Name: frontend-dev 
+keyed_groups:
+- prefix: ""
+  key: frontend 
