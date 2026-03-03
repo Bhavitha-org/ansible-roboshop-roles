@@ -6,4 +6,6 @@
 # 36663665306162626262613531616466303664326564373261393662353233613632316362363632
 # 3334333936336163336334623039393237636532353935323339
 
-MYSQL_ROOT_PASSWORD:
+MYSQL_ROOT_PASSWORD: "{{ lookup('amazon.aws.aws_ssm', '/roboshop/dev/mysql_root_password', region='us-east-1', decrypt=True) }}"
+
+#we are telling ansible that, use plugin related to ssm parameter store then we given key, region and told to decrypt the value when getting
